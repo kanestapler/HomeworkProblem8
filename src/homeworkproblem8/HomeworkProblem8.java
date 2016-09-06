@@ -32,11 +32,19 @@ public class HomeworkProblem8 {
             System.out.println(person.getZipcode());
         }
     }
+    
+    private static String[] splitStringByTabsAndAddPerson(String line, ArrayList<Person> peopleList) {
+    	String[] stringSplittedByTab = line.split("\\t+");
+    	return stringSplittedByTab;
+    }
 
     private static void createNewPersonFromLineAndAddToArrayList(String line, ArrayList<Person> peopleList) {
-        String[] stringSplitted = line.split("\\s+");
-        Person person = new Person(stringSplitted[0], stringSplitted[1], stringSplitted[2]);
-        peopleList.add(person);
+    	String[] stringSplittedByTab = splitStringByTabsAndAddPerson(line, peopleList);
+    	for (String personString : stringSplittedByTab) {
+            String[] stringSplittedBySpace = personString.split("\\s+");
+            Person person = new Person(stringSplittedBySpace[0], stringSplittedBySpace[1], stringSplittedBySpace[2]);
+            peopleList.add(person);
+    	}
     }
 
     private static void sortArrayListOfPeopleByZip(ArrayList<Person> peopleList) {
@@ -45,7 +53,6 @@ public class HomeworkProblem8 {
             public int compare(Person p1, Person p2) {
                 return p1.getZipcode() - p2.getZipcode();
             }
-
         });
     }
 }
