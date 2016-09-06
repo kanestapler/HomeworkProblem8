@@ -14,8 +14,6 @@ import java.util.Comparator;
  */
 public class HomeworkProblem8 {
 
-    private static Object Database;
-
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         ArrayList<Person> listOfPeople = new ArrayList<>();
@@ -35,13 +33,13 @@ public class HomeworkProblem8 {
         }
     }
 
-    private static void createNewPersonFromLineAndAddToArrayList(String line, ArrayList peopleList) {
+    private static void createNewPersonFromLineAndAddToArrayList(String line, ArrayList<Person> peopleList) {
         String[] stringSplitted = line.split("\\s+");
         Person person = new Person(stringSplitted[0], stringSplitted[1], stringSplitted[2]);
         peopleList.add(person);
     }
 
-    private static void sortArrayListOfPeopleByZip(ArrayList peopleList) {
+    private static void sortArrayListOfPeopleByZip(ArrayList<Person> peopleList) {
         Collections.sort(peopleList, new Comparator<Person>() {
             @Override
             public int compare(Person p1, Person p2) {
